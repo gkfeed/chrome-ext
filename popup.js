@@ -1,12 +1,13 @@
 document.getElementById('changeColor').addEventListener('click', function() {
   chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+    let api_root = 'http://gkfeed.gws/api/v1/'
     let currentURL = tabs[0].url;
     
     let data = {
       url: currentURL
     };
 
-    fetch('http://0.0.0.0:8000/api/v1/add_lazy', {
+    fetch(api_root + 'add_lazy', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
